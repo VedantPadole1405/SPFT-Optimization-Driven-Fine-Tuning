@@ -1,8 +1,8 @@
 # 🧠 SPFT: Optimization-Driven Fine-Tuning for Medical Imaging
 
-A simple yet effective training framework for improving **cross-dataset generalization** of foundation models in medical imaging.
+A simple and effective training framework for improving **cross-dataset generalization** of foundation models in medical imaging.
 
-This repository implements our optimization-driven fine-tuning strategy, demonstrating strong performance across:
+This repository provides training scripts demonstrating strong performance across:
 
 * ChestX-ray14 (CXR14)
 * CheXpert
@@ -12,17 +12,17 @@ This repository implements our optimization-driven fine-tuning strategy, demonst
 
 ## 🚀 Overview
 
-Foundation models have shown strong performance in medical imaging, but generalization across datasets and modalities remains challenging.
+Foundation models achieve strong performance in medical imaging, but generalization across datasets remains challenging.
 
-We propose a **lightweight adaptation strategy** based on:
+We propose a **lightweight optimization-driven fine-tuning strategy** based on:
 
 * 🔓 Progressive layer unfreezing
 * ⚖️ Class-aware loss weighting
 * 📉 Differential learning rates
-* 📊 Exponential Moving Average (EMA) stabilization
+* 📊 Exponential Moving Average (EMA)
 
 👉 **Key Idea:**
-Instead of modifying architectures, we improve performance through **carefully designed optimization strategies**.
+Improve performance through **training strategy**, without modifying model architecture.
 
 ---
 
@@ -33,29 +33,20 @@ Instead of modifying architectures, we improve performance through **carefully d
 * **HAM10000:** ~0.95 Macro AUC
 
 ✔ Competitive performance across datasets
-✔ Stable training with low variance
-✔ No architectural modifications required
+✔ Stable training
+✔ No architectural modifications
 
 ---
 
 ## 📂 Repository Structure
 
-```
+```id="7j8f2q"
 repo/
 │
 ├── train/
 │   ├── train_chexpert.py
 │   ├── train_cxr14.py
 │   ├── train_ham10000.py
-│
-├── models/
-│   ├── model.py
-│
-├── utils/
-│   ├── dataset.py
-│   ├── evaluation.py
-│
-├── checkpoints/   # optional
 │
 ├── requirements.txt
 └── README.md
@@ -65,7 +56,7 @@ repo/
 
 ## ⚙️ Installation
 
-```bash
+```bash id="t5f3lk"
 pip install -r requirements.txt
 ```
 
@@ -73,40 +64,34 @@ pip install -r requirements.txt
 
 ## ▶️ Training
 
-### Train on CheXpert
+### CheXpert
 
-```bash
+```bash id="6z9vpk"
 python train/train_chexpert.py
 ```
 
-### Train on ChestX-ray14
+### ChestX-ray14
 
-```bash
+```bash id="l9u2re"
 python train/train_cxr14.py
 ```
 
-### Train on HAM10000
+### HAM10000
 
-```bash
+```bash id="b3kx2c"
 python train/train_ham10000.py
 ```
 
 ---
 
-## 🧪 Method Details
+## 🧪 Method
 
-Our training framework (SPFT) consists of:
+The training pipeline consists of:
 
-* **Stage 1:** Train classification head (frozen encoder)
-* **Stage 2:** Progressive unfreezing of top layers
-* **Stage 3:** Apply class-aware loss weighting
-* **Stage 4:** Stabilize training using EMA
-
-This approach enables:
-
-* Better adaptation to dataset-specific distributions
-* Improved performance on imbalanced classes
-* Stable convergence across runs
+1. Train classification head (frozen encoder)
+2. Progressive unfreezing of top layers
+3. Apply class-aware loss weighting
+4. Stabilize training using EMA
 
 ---
 
@@ -114,21 +99,13 @@ This approach enables:
 
 Results reported in the paper can be reproduced using the provided training scripts.
 
----
-
-## 📌 Notes
-
-* Designed for **research reproducibility**, not production deployment
-* Dataset preprocessing may vary depending on source
-* Performance may vary slightly across runs
+Pretrained model weights will be released upon acceptance.
 
 ---
 
 ## 📄 Citation
 
-If you find this work useful, please consider citing:
-
-```
+```id="cz7w2v"
 @article{spft2026,
   title={Optimization-Driven Fine-Tuning for Cross-Dataset Generalization in Medical Imaging},
   author={Anonymous},
@@ -138,24 +115,8 @@ If you find this work useful, please consider citing:
 
 ---
 
-## 🤝 Acknowledgements
-
-Built using:
-
-* PyTorch
-* HuggingFace Transformers
-* RAD-DINO backbone
-
----
-
 ## ⭐ Contribution
 
-This work demonstrates that:
+This work shows that:
 
 > Strong performance in medical imaging can be achieved through **optimization strategies rather than architectural changes**.
-
----
-
-## 📬 Contact
-
-For questions or issues, feel free to open an issue in this repository.
